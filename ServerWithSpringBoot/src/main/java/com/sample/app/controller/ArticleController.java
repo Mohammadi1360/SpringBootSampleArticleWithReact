@@ -38,10 +38,9 @@ public class ArticleController {
         return new ResponseEntity<Article>(article, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{rfid}")
-    public ResponseEntity<?> getArticleByRfId(@PathVariable String rfid) {
-        Article article = articleService.findArticleByRfId(rfid);
-
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getArticleById(@PathVariable long id) {
+        Article article = articleService.findArticleById(id);
         return new ResponseEntity<Article>(article, HttpStatus.OK);
     }
 
@@ -50,10 +49,9 @@ public class ArticleController {
         return articleService.findAllArticles();
     }
 
-    @DeleteMapping("/{rfid}")
-    public ResponseEntity<?> deleteArticle(@PathVariable String rfid) {
-        articleService.deleteArticleByRfid(rfid);
-
-        return new ResponseEntity<String>("Article with RFID: " + rfid + " was deleted", HttpStatus.OK);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteArticle(@PathVariable long id) {
+        articleService.deleteArticleById(id);
+        return new ResponseEntity<String>("Article with ID: " + id + " was deleted", HttpStatus.OK);
     }
 }

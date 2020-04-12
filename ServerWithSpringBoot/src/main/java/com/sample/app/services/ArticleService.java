@@ -28,28 +28,25 @@ public class ArticleService {
         }
     }
 
-    public Article findArticleByRfId(String rfid) {
-
-        Article article = articleRepository.findByRfid(rfid);
+    public Article findArticleById(long id) {
+        Article article = articleRepository.findById(id);
 
         if (article == null) {
-            throw new ArticleRfIdException("Article RFID does not exist");
+            throw new ArticleRfIdException("Article ID does not exist");
         }
 
         return article;
     }
 
-
     public Iterable<Article> findAllArticles() {
         return articleRepository.findAll();
     }
 
-
-    public void deleteArticleByRfid(String rfid) {
-        Article article = articleRepository.findByRfid(rfid);
+    public void deleteArticleById(long id) {
+        Article article = articleRepository.findById(id);
 
         if (article == null) {
-            throw new ArticleRfIdException("Cannot delete article with RFID " + rfid + ". This article does not exist.");
+            throw new ArticleRfIdException("Cannot delete article with ID " + id + ". This article does not exist.");
         }
         articleRepository.delete(article);
     }
