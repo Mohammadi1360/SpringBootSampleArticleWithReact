@@ -65,7 +65,7 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(articleActions.getAll());
+    this.props.dispatch(articleActions.getAllArticles());
   }
 
   showConfirmationDialog = (size) => () => {
@@ -86,6 +86,9 @@ class HomePage extends React.Component {
 
   deleteSelectedItem = () => {
     console.log(this.state.selectedRow);
+    this.props.dispatch(articleActions.deleteArticle(this.state.selectedRow));
+    // this.props.dispatch(articleActions.getAllArticles());
+
     this.closeConfirmationDialog();
   };
 
@@ -103,7 +106,6 @@ class HomePage extends React.Component {
         {/*<h3>Users from secure api end point:</h3>*/}
         {articles.loading && <em>Loading articles...</em>}
         {articles.error && <span className="text-danger">ERROR: {articles.error}</span>}
-
 
         <Card fluid>
           <Card.Content>
@@ -149,7 +151,7 @@ class HomePage extends React.Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {_.map(articles.items, ({ id, rfid, articleName, articleNumber, storageLocation, price }) => (
+                {articles.items && _.map(articles.items, ({ id, rfid, articleName, articleNumber, storageLocation, price }) => (
                   <Table.Row key={id} onClick={this.onRowClick}>
                     <Table.Cell collapsing verticalAlign='center'>
                       <Radio

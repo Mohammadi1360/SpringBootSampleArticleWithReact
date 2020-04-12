@@ -3,10 +3,11 @@ import { authHeader } from '../_helpers';
 
 export const articleService = {
   logout,
-  getAll,
+  getAllArticles,
+  deleteArticle,
 };
 
-function getAll() {
+function getAllArticles() {
   const requestOptions = {
     method: 'GET',
     headers: authHeader(),
@@ -15,14 +16,15 @@ function getAll() {
   return fetch(`${config.url.API_URL}/api/article`, requestOptions).then(handleResponse);
 }
 
-// function deleteArticle() {
-//   const requestOptions = {
-//     method: 'DELETE',
-//     headers: authHeader(),
-//   };
-//
-//   return fetch(`${config.url.API_URL}/api/article`, requestOptions).then(handleResponse);
-// }
+
+function deleteArticle(id) {
+  const requestOptions = {
+    method: 'DELETE',
+    headers: authHeader(),
+  };
+
+  return fetch(`${config.url.API_URL}/api/article/${id}`, requestOptions).then(handleResponse);
+}
 
 function logout() {
   // remove user from local storage to log user out
