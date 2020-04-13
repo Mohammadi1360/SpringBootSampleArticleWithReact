@@ -6,7 +6,8 @@ import { history } from '../_helpers';
 export const articleActions = {
   logout,
   getAllArticles,
-  deleteArticle
+  deleteArticle,
+  saveArticle,
 };
 
 
@@ -23,7 +24,7 @@ function getAllArticles() {
     articleService.getAllArticles()
       .then(
         articles => dispatch(success(articles)),
-        error => dispatch(failure(error)),
+        error => dispatch(failure(error.toString())),
       );
 
   };
@@ -38,6 +39,36 @@ function getAllArticles() {
 
   function failure(error) {
     return { type: articleConstants.GETALL_FAILURE, error };
+  }
+}
+
+function saveArticle(article) {
+  return dispatch => {
+    dispatch(request(article));
+
+    articleService.saveArticle(article)
+      .then(
+        article => {
+          dispatch(success(article));
+          dispatch(alertActions.success('Registration successful'));
+        },
+        error => {
+          dispatch(failure(error.toString()));
+          dispatch(alertActions.error(error.toString()));
+        },
+      );
+  };
+
+  function request(article) {
+    return { type: articleConstants.REGISTER_REQUEST, article };
+  }
+
+  function success(article) {
+    return { type: articleConstants.REGISTER_SUCCESS, article };
+  }
+
+  function failure(error) {
+    return { type: articleConstants.REGISTER_FAILURE, error };
   }
 }
 

@@ -18,29 +18,70 @@ import {
   Input,
   Select,
   TextArea,
+  Grid,
 } from 'semantic-ui-react';
 
 import { articles } from '../../_reducers/articles.reducer';
 
-const storageLocationOptions = [
-  { key: '1', text: 'StorageLocation 1', value: 'StorageLocation_1' },
-  { key: '2', text: 'StorageLocation 2', value: 'StorageLocation_2' },
-  { key: '3', text: 'StorageLocation 3', value: 'StorageLocation_3' },
-  { key: '4', text: 'StorageLocation 4', value: 'StorageLocation_4' },
-  { key: '5', text: 'StorageLocation 5', value: 'StorageLocation_5' },
-  { key: '6', text: 'StorageLocation 6', value: 'StorageLocation_6' },
-];
-
+const defaultItem = {
+  id: 0,
+  rfid: '',
+  articleName: '',
+  articleNumber: '',
+  storageLocation: '',
+  price: '',
+};
 
 class HomePage extends React.Component {
-  handleChange = (e, { value }) => {
-    // console.log(e.target.value);
-    console.log(value);
-
-    console.log('this.state.selectedRow');
-    console.log(this.state.selectedRow);
 
 
+  componentDidMount() {
+    this.props.dispatch(articleActions.getAllArticles());
+  }
+
+  constructor(props) {
+    console.log('constructor =>>');
+    super(props);
+    this.state = {
+      column: null,
+      data: articles.items,
+      direction: null,
+      openEditNewDialog: false,
+      openConfirmation: false,
+      openWarning: false,
+      selectedRow: -1,
+      item: defaultItem,
+    };
+  }
+
+  // componentDidUpdate(prevProps) {
+  //   // console.log('componentDidUpdate =>>');
+  //   if (this.state.item.id !== this.props.article.id) {
+  //     this.setState({
+  //       item: this.props.article
+  //     });
+  //   }
+  // }
+
+  handleItemChanges = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    let item = { ...this.state.item };
+    item[name] = value;
+    this.setState({ item });
+  };
+
+  handleSaveButton = () => {
+    console.log('this.state.item:');
+    console.log(this.state.item);
+    this.props.dispatch(articleActions.saveArticle(this.state.item));
+    // this.setState({ showSuccessMessage: true });
+    // this.closeEditNewDialog();
+  };
+
+  handleRowChange = (e, { value }) => {
     this.setState({ selectedRow: value });
   };
 
@@ -67,26 +108,13 @@ class HomePage extends React.Component {
     console.log(rowInfo);
   };
 
-  constructor(props) {
-    console.log('constructor =>>');
-    super(props);
-    this.state = {
-      column: null,
-      data: articles.items,
-      direction: null,
-      openEditNewDialog: false,
-      openConfirmation: false,
-      openWarning: false,
-      selectedRow: -1,
-    };
-  }
-
-  componentDidMount() {
-    this.props.dispatch(articleActions.getAllArticles());
-  }
 
   showEditNewDialog = (dimmer) => () => this.setState({ dimmer, openEditNewDialog: true });
-  closeEditNewDialog = () => this.setState({ openEditNewDialog: false });
+
+  closeEditNewDialog = () => {
+    this.setState({ openEditNewDialog: false });
+    this.props.dispatch(articleActions.getAllArticles());
+  };
 
 
   showConfirmationDialog = (size) => () => {
@@ -117,17 +145,20 @@ class HomePage extends React.Component {
 
   render() {
     const { user, articles } = this.props;
-    const { column, data, direction, openConfirmation, openWarning, openEditNewDialog, size, dimmer } = this.state;
+    let errorList = [];
+
+    try {
+      errorList = JSON.parse(articles.error);
+    } catch (e) {
+      errorList = [];
+    }
+
+    const { column, item, direction, openConfirmation, openWarning, openEditNewDialog, size, dimmer } = this.state;
 
     return (
       <div className="col-md-6 col-md-offset-3">
         <h1>{user.firstName}</h1>
         <h1>Article List</h1>
-
-        {/*<p>You're logged in with React & JWT!!</p>*/}
-        {/*<h3>Users from secure api end point:</h3>*/}
-        {articles.loading && <em>Loading articles...</em>}
-        {articles.error && <span className="text-danger">ERROR: {articles.error}</span>}
 
         <Card fluid>
           <Card.Content>
@@ -180,7 +211,7 @@ class HomePage extends React.Component {
                         name='radio1'
                         value={id}
                         checked={this.state.selectedRow === id}
-                        onChange={this.handleChange}/>
+                        onChange={this.handleRowChange}/>
 
                     </Table.Cell>
                     <Table.Cell>{rfid}</Table.Cell>
@@ -230,66 +261,102 @@ class HomePage extends React.Component {
         {/*openEditNewDialog**************************/}
 
         <Modal dimmer={dimmer} open={openEditNewDialog} onClose={this.closeEditNewDialog}>
-          <Modal.Header>New Article</Modal.Header>
+          <Modal.Header>
+            New Article
+          </Modal.Header>
+
           <Modal.Content>
+            {/*<Message size='tiny' success hidden={articles.error}>*/}
+            {/*/!*<Icon name='help'/>*!/*/}
+            {/*The Article Successfully saved.*/}
+            {/*/!*{articles.error}*!/*/}
+            {/*</Message>*/}
+
+            {this.state.item &&
             <Form>
               <Form.Field
-                id='form-input-control-article-name'
+                id='articleName'
+                name='articleName'
                 control={Input}
                 label='Article Name'
                 placeholder='Article Name'
+                value={item.articleName}
+                onChange={this.handleItemChanges}
+                required
+                error={errorList.hasOwnProperty('articleName')}
               />
 
               <Form.Group widths='equal'>
                 <Form.Field
-                  id='form-input-control-article-number'
+                  id='articleNumber'
+                  name='articleNumber'
                   control={Input}
                   label='Article Number'
                   placeholder='Article Number'
+                  value={item.articleNumber}
+                  onChange={this.handleItemChanges}
+                  required
+                  error={errorList.hasOwnProperty('articleNumber')}
                 />
 
                 <Form.Field
-                  id='form-input-control-rfid'
+                  id='rfid'
+                  name='rfid'
                   control={Input}
                   label='RFID'
                   placeholder='RFID'
+                  value={item.rfid}
+                  onChange={this.handleItemChanges}
+                  required
+                  error={errorList.hasOwnProperty('rfid')}
                 />
               </Form.Group>
 
               <Form.Group widths='equal'>
                 <Form.Field
-                  control={Select}
-                  options={storageLocationOptions}
-                  label={{ children: 'StorageLocation', htmlFor: 'form-select-control-storage-location' }}
+                  id='storageLocation'
+                  name='storageLocation'
+                  control={Input}
+                  label='Storage Location'
                   placeholder='Storage Location'
-                  search
-                  searchInput={{ id: 'form-select-control-storage-location' }}
+                  value={item.storageLocation}
+                  onChange={this.handleItemChanges}
+                  required
+                  error={errorList.hasOwnProperty('storageLocation')}
                 />
 
                 <Form.Field
-                  id='form-input-control-price'
+                  id='price'
+                  name='price'
                   control={Input}
                   label='Price'
                   placeholder='Price'
+                  value={item.price}
+                  onChange={this.handleItemChanges}
+                  required
+                  error={errorList.hasOwnProperty('price')}
                 />
 
               </Form.Group>
 
             </Form>
+            }
+
+
           </Modal.Content>
+
+
           <Modal.Actions>
             <Button secondary onClick={this.closeEditNewDialog}>
               Close
             </Button>
-
             <Button
               primary
               icon='checkmark'
               labelPosition='right'
               content="Save"
-              onClick={this.closeEditNewDialog}
+              onClick={this.handleSaveButton}
             />
-
           </Modal.Actions>
         </Modal>
 
