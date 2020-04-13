@@ -12,9 +12,25 @@ import {
   Modal,
   Radio,
   Message,
+  Image,
+  Header,
+  Form,
+  Input,
+  Select,
+  TextArea,
 } from 'semantic-ui-react';
 
 import { articles } from '../../_reducers/articles.reducer';
+
+const storageLocationOptions = [
+  { key: '1', text: 'StorageLocation 1', value: 'StorageLocation_1' },
+  { key: '2', text: 'StorageLocation 2', value: 'StorageLocation_2' },
+  { key: '3', text: 'StorageLocation 3', value: 'StorageLocation_3' },
+  { key: '4', text: 'StorageLocation 4', value: 'StorageLocation_4' },
+  { key: '5', text: 'StorageLocation 5', value: 'StorageLocation_5' },
+  { key: '6', text: 'StorageLocation 6', value: 'StorageLocation_6' },
+];
+
 
 class HomePage extends React.Component {
   handleChange = (e, { value }) => {
@@ -58,6 +74,7 @@ class HomePage extends React.Component {
       column: null,
       data: articles.items,
       direction: null,
+      openEditNewDialog: false,
       openConfirmation: false,
       openWarning: false,
       selectedRow: -1,
@@ -67,6 +84,10 @@ class HomePage extends React.Component {
   componentDidMount() {
     this.props.dispatch(articleActions.getAllArticles());
   }
+
+  showEditNewDialog = (dimmer) => () => this.setState({ dimmer, openEditNewDialog: true });
+  closeEditNewDialog = () => this.setState({ openEditNewDialog: false });
+
 
   showConfirmationDialog = (size) => () => {
     if (this.state.selectedRow === -1) {
@@ -88,14 +109,15 @@ class HomePage extends React.Component {
     console.log(this.state.selectedRow);
     this.props.dispatch(articleActions.deleteArticle(this.state.selectedRow));
     // this.props.dispatch(articleActions.getAllArticles());
-
+    console.log('articles.items');
+    console.log(articles.items);
     this.closeConfirmationDialog();
   };
 
 
   render() {
     const { user, articles } = this.props;
-    const { column, data, direction, openConfirmation, openWarning, size } = this.state;
+    const { column, data, direction, openConfirmation, openWarning, openEditNewDialog, size, dimmer } = this.state;
 
     return (
       <div className="col-md-6 col-md-offset-3">
@@ -173,15 +195,16 @@ class HomePage extends React.Component {
               <Table.Footer fullWidth>
                 <Table.Row>
                   <Table.HeaderCell colSpan='5'>
-                    <Button icon
-                            labelPosition='left'
+                    <Button onClick={this.showEditNewDialog('blurring')}
+                            icon
+                            labelPosition='right'
                             positive
                             size='small'>
                       <Icon name='plus'/> Add
                     </Button>
 
                     <Button icon
-                            labelPosition='left'
+                            labelPosition='right'
                             size='small'
                             primary>
 
@@ -190,7 +213,7 @@ class HomePage extends React.Component {
 
                     <Button onClick={this.showConfirmationDialog('tiny')}
                             icon
-                            labelPosition='left'
+                            labelPosition='right'
                             size='small'
                             negative>
                       <Icon name='edit'/> Delete
@@ -200,16 +223,79 @@ class HomePage extends React.Component {
                   <Table.HeaderCell/>
                 </Table.Row>
               </Table.Footer>
-
             </Table>
-
           </Card.Content>
-
-
         </Card>
 
+        {/*openEditNewDialog**************************/}
 
-        <Modal size={size} open={openConfirmation} onClose={this.close}>
+        <Modal dimmer={dimmer} open={openEditNewDialog} onClose={this.closeEditNewDialog}>
+          <Modal.Header>New Article</Modal.Header>
+          <Modal.Content>
+            <Form>
+              <Form.Field
+                id='form-input-control-article-name'
+                control={Input}
+                label='Article Name'
+                placeholder='Article Name'
+              />
+
+              <Form.Group widths='equal'>
+                <Form.Field
+                  id='form-input-control-article-number'
+                  control={Input}
+                  label='Article Number'
+                  placeholder='Article Number'
+                />
+
+                <Form.Field
+                  id='form-input-control-rfid'
+                  control={Input}
+                  label='RFID'
+                  placeholder='RFID'
+                />
+              </Form.Group>
+
+              <Form.Group widths='equal'>
+                <Form.Field
+                  control={Select}
+                  options={storageLocationOptions}
+                  label={{ children: 'StorageLocation', htmlFor: 'form-select-control-storage-location' }}
+                  placeholder='Storage Location'
+                  search
+                  searchInput={{ id: 'form-select-control-storage-location' }}
+                />
+
+                <Form.Field
+                  id='form-input-control-price'
+                  control={Input}
+                  label='Price'
+                  placeholder='Price'
+                />
+
+              </Form.Group>
+
+            </Form>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button secondary onClick={this.closeEditNewDialog}>
+              Close
+            </Button>
+
+            <Button
+              primary
+              icon='checkmark'
+              labelPosition='right'
+              content="Save"
+              onClick={this.closeEditNewDialog}
+            />
+
+          </Modal.Actions>
+        </Modal>
+
+        {/*openConfirmation**************************/}
+
+        <Modal size={size} open={openConfirmation} onClose={this.closeConfirmationDialog}>
           <Modal.Header>Delete Selected Article</Modal.Header>
           <Modal.Content>
             <p>Are you sure you want to delete this article ? </p>
@@ -229,7 +315,9 @@ class HomePage extends React.Component {
           </Modal.Actions>
         </Modal>
 
-        <Modal size={size} open={openWarning} onClose={this.close}>
+        {/*openWarning**************************/}
+
+        <Modal size={size} open={openWarning} onClose={this.closeWarningDialog}>
           <Modal.Header></Modal.Header>
           <Modal.Content>
             <Message negative>

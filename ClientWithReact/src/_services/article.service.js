@@ -22,7 +22,9 @@ function deleteArticle(id) {
     method: 'DELETE',
     headers: authHeader(),
   };
-
+  console.log("requestOptions");
+  console.log(requestOptions);
+  
   return fetch(`${config.url.API_URL}/api/article/${id}`, requestOptions).then(handleResponse);
 }
 
