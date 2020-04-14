@@ -6,6 +6,7 @@ export const articleService = {
   getAllArticles,
   deleteArticle,
   saveArticle,
+  getArticleById,
 };
 
 function getAllArticles() {
@@ -16,6 +17,16 @@ function getAllArticles() {
 
   return fetch(`${config.url.API_URL}/api/article`, requestOptions).then(handleResponse);
 }
+
+function getArticleById(id) {
+  const requestOptions = {
+    method: 'GET',
+    headers: authHeader(),
+  };
+
+  return fetch(`${config.url.API_URL}/api/article/${id}`, requestOptions).then(handleResponse);
+}
+
 
 function saveArticle(article) {
   const requestOptions = {
@@ -42,7 +53,7 @@ function logout() {
 }
 
 function handleResponse(response) {
-  console.log("response");
+  console.log('response');
   console.log(response);
 
   return response.text().then(text => {

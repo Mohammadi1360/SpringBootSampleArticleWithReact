@@ -3,9 +3,19 @@ import { articleService, userService } from '../_services';
 import { alertActions } from './alert.actions';
 import { history } from '../_helpers';
 
+const defaultItem = {
+  id: 0,
+  rfid: '',
+  articleName: '',
+  articleNumber: 0,
+  storageLocation: '',
+  price: 0,
+};
+
 export const articleActions = {
   logout,
   getAllArticles,
+  getArticleById,
   deleteArticle,
   saveArticle,
 };
@@ -39,6 +49,40 @@ function getAllArticles() {
 
   function failure(error) {
     return { type: articleConstants.GETALL_FAILURE, error };
+  }
+}
+
+function getArticleById(id) {
+  return dispatch => {
+
+    if (id === 0) {
+      dispatch(success(defaultItem));
+    } else {
+      dispatch(request({ id }));
+
+      articleService.getArticleById(id)
+        .then(
+          article => {
+            dispatch(success(article));
+          },
+          error => {
+            dispatch(failure(error.toString()));
+            dispatch(alertActions.error(error.toString()));
+          },
+        );
+    }
+  };
+
+  function request(article) {
+    return { type: articleConstants.GET_REQUEST, article };
+  }
+
+  function success(article) {
+    return { type: articleConstants.GET_SUCCESS, article };
+  }
+
+  function failure(error) {
+    return { type: articleConstants.GET_FAILURE, error };
   }
 }
 

@@ -1,4 +1,4 @@
-import { articleConstants, userConstants } from '../_constants';
+import { articleConstants } from '../_constants';
 
 const initialState = {
   items: [],
@@ -30,6 +30,29 @@ export function articles(state = initialState, action) {
         loading: false,
         error: action.error,
       };
+
+    case articleConstants.GET_REQUEST:
+      return {
+        ...state,
+        item: {},
+        loading: true,
+        error: false,
+      };
+    case articleConstants.GET_SUCCESS:
+      return {
+        ...state,
+        item: action.article,
+        loading: false,
+        error: false,
+      };
+    case articleConstants.GET_FAILURE:
+      return {
+        ...state,
+        item: {},
+        loading: false,
+        error: action.error,
+      };
+
     case articleConstants.DELETE_REQUEST:
       return {
         ...state,
