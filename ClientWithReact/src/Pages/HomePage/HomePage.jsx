@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ArticleForm } from '../ArticlePage/ArticleForm';
+import { TopMenu } from '../Menu/TopMenu';
 
 
 class HomePage extends React.Component {
@@ -10,13 +11,11 @@ class HomePage extends React.Component {
 
     return (
       <div className="col-md-6 col-md-offset-3">
+        <TopMenu/>
         <h1>{user.username}</h1>
 
         <ArticleForm/>
 
-        <p>
-          <Link to="/login">Logout</Link>
-        </p>
       </div>
     );
   }

@@ -1,9 +1,9 @@
 package com.sample.app.controller;
 
 import com.sample.app.config.JwtTokenUtil;
+import com.sample.app.dto.UserDto;
 import com.sample.app.model.JwtRequest;
 import com.sample.app.model.JwtResponse;
-import com.sample.app.dto.UserDto;
 import com.sample.app.services.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

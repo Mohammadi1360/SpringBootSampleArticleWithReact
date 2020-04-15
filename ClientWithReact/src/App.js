@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { PrivateRoute } from './_components';
 import { alertActions } from './_actions';
 import { history } from './_helpers';
-import Menu from './Pages/Menu/Menu';
+import { TopMenu } from './Pages/Menu/TopMenu';
 import { LoginPage } from './Pages/LoginPage/LoginPage';
 import { HomePage } from './Pages/HomePage';
 
@@ -25,7 +25,6 @@ class App extends React.Component {
     const { alert } = this.props;
     return (
       <Fragment>
-        <Menu/>
         <Container>
           <Router history={history}>
             <div>

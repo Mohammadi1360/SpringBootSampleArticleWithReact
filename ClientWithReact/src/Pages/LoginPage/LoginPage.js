@@ -5,6 +5,7 @@ import {
   Grid,
   Header,
   Message,
+  Image,
   Segment,
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
@@ -49,30 +50,25 @@ class LoginPage extends React.Component {
     const { username, password, submitted } = this.state;
     return (
 
-      <Grid centered columns={2}>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">
-            Login
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h2' color='teal' textAlign='center'>
+            <Image src='/logo.png'/> Log-in to your account
           </Header>
-          <Segment>
-            <Form size="large" onSubmit={this.handleSubmit}>
+          <Form size='large' onSubmit={this.handleSubmit}>
+            <Segment stacked>
               <Form.Input
-                fluid
-                icon="user"
-                iconPosition="left"
-                placeholder="UserName"
+                fluid icon='user'
+                iconPosition='left'
+                placeholder='UserName'
                 name="username"
                 value={username}
                 onChange={this.handleChange}/>
 
-              {submitted && !username &&
-              <div className="help-block">Username is required</div>
-              }
-
               <Form.Input
                 fluid
-                icon="lock"
-                iconPosition="left"
+                icon='lock'
+                iconPosition='left'
                 placeholder="Password"
                 type="password"
                 name="password"
@@ -83,14 +79,15 @@ class LoginPage extends React.Component {
               <div className="help-block">Password is required</div>
               }
 
-              <Button color="blue" fluid size="large">
+              <Button color='teal' fluid size='large'>
                 Login
                 {loggingIn}
               </Button>
-            </Form>
-          </Segment>
+
+            </Segment>
+          </Form>
           <Message>
-            Not registered yet? <a href="#">Sign Up</a>
+            New to us? <a href='#'>Sign Up</a>
           </Message>
         </Grid.Column>
       </Grid>
