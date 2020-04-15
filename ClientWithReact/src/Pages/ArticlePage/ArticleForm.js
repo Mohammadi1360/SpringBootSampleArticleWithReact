@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { articleActions } from '../../_actions';
+import { articleActions, alertActions } from '../../_actions';
 import { ArticleDialog } from '../ArticlePage/ArticleDialog';
 
 import _ from 'lodash';
@@ -40,7 +40,6 @@ class ArticleForm extends React.Component {
       direction: null,
       openEditNewDialog: false,
       openConfirmation: false,
-      openWarning: false,
       selectedId: 0,
       formMode: FORM_INSERT,
     };
@@ -83,9 +82,23 @@ class ArticleForm extends React.Component {
     console.log('here1');
   }
 
+  showMessage = (message, type, second) => {
+    if (type === 'error') {
+      this.props.dispatch(alertActions.error(message));
+    } else if (type === 'success') {
+      this.props.dispatch(alertActions.success(message));
+    }
+
+    const timer = setTimeout(() => {
+      this.props.dispatch(alertActions.clear());
+    }, second * 1000);
+  };
+
   showEditNewDialog = (dimmer, formMode) => () => {
+    this.props.dispatch(alertActions.clear());
+
     if (formMode === FORM_EDIT && this.state.selectedId === 0) {
-      this.setState({ openWarning: true });
+      this.showMessage('Please Select one item before any action !', 'error', 2);
     } else {
       let id = 0;
       (formMode === FORM_EDIT ? id = this.state.selectedId : id = 0);
@@ -109,7 +122,7 @@ class ArticleForm extends React.Component {
 
   showConfirmationDialog = (size) => () => {
     if (this.state.selectedId === 0) {
-      this.setState({ size, openWarning: true });
+      this.showMessage('Please Select one item before any action !', 'error', 2);
     } else {
       this.setState({ size, openConfirmation: true });
     }
@@ -119,22 +132,15 @@ class ArticleForm extends React.Component {
     this.setState({ openConfirmation: false });
   };
 
-  closeWarningDialog = () => {
-    this.setState({ openWarning: false });
-  };
-
   deleteSelectedItem = () => {
     console.log(this.state.selectedId);
     this.props.dispatch(articleActions.deleteArticle(this.state.selectedId));
-    // this.props.dispatch(articleActions.getAllArticles());
-    console.log('articles.items');
-    console.log(articles.items);
     this.closeConfirmationDialog();
   };
 
 
   render() {
-    const { user, articles } = this.props;
+    const { user, articles, alert } = this.props;
     let errorList = [];
 
     try {
@@ -143,12 +149,20 @@ class ArticleForm extends React.Component {
       errorList = [];
     }
 
-    const { column, item, direction, openConfirmation, openWarning, openEditNewDialog, dimmer, formMode } = this.state;
+    const { column, item, direction, openConfirmation, openEditNewDialog, dimmer, formMode } = this.state;
 
     return (
       <Fragment>
 
         <Card fluid>
+          <Message size='tiny'
+                   success={alert.type === 'alert-success'}
+                   warning={alert.type === 'alert-error'}
+                   negative={alert.type === 'alert-danger'}
+                   hidden={!alert.type}>
+            {alert.message}
+          </Message>
+
           <Card.Content>
             <Card.Header>Article List</Card.Header>
 
@@ -276,27 +290,6 @@ class ArticleForm extends React.Component {
           </Modal.Actions>
         </Modal>
 
-        {/*openWarning**************************/}
-
-        <Modal size='small' open={openWarning} onClose={this.closeWarningDialog}>
-          <Modal.Header></Modal.Header>
-          <Modal.Content>
-            <Message negative>
-              <Message.Header>Error</Message.Header>
-              <p>Please Select one item before any action !</p>
-            </Message>
-
-          </Modal.Content>
-          <Modal.Actions>
-            <Button onClick={this.closeWarningDialog}
-                    primary
-                    icon='checkmark'
-                    labelPosition='right'
-                    content='Close'/>
-
-          </Modal.Actions>
-        </Modal>
-
       </Fragment>
     );
   }
@@ -310,6 +303,7 @@ function mapStateToProps(state) {
     items: state.articles.items,
     user,
     articles,
+    alert: state.alert,
   };
 }
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { articleActions } from '../../_actions';
 import _ from 'lodash';
 
-import { Button, Form, Input, Modal } from 'semantic-ui-react';
+import { Button, Form, Input, Modal, Message } from 'semantic-ui-react';
 
 import { articles } from '../../_reducers/articles.reducer';
 import { FORM_EDIT, FORM_INSERT } from '../../_constants/common.constants';
@@ -82,12 +82,20 @@ class ArticleDialog extends React.Component {
     // this.closeEditNewDialog();
   };
 
+  handleCloseButton = () => {
+    this.setState({ item: defaultItem });
+    this.props.closeEditNewDialog();
+
+    // this.setState({ showSuccessMessage: true });
+    // this.closeEditNewDialog();
+  };
 
   render() {
-    const { user, articles, dimmer, openEditNewDialog } = this.props;
+    const { user, articles, dimmer, openEditNewDialog, alert } = this.props;
     let { item } = this.state;
     // const { item } = this.props;
-
+    console.log('alert');
+    console.log(alert);
     let errorList = [];
 
     try {
@@ -100,17 +108,19 @@ class ArticleDialog extends React.Component {
     return (
 
 
-      <Modal dimmer={dimmer} open={openEditNewDialog} onClose={this.props.closeEditNewDialog}>
+      <Modal dimmer={dimmer} open={openEditNewDialog} onClose={this.handleCloseButton}>
         <Modal.Header>
           New Article
         </Modal.Header>
 
         <Modal.Content>
-          {/*<Message size='tiny' success hidden={articles.error}>*/}
-          {/*/!*<Icon name='help'/>*!/*/}
-          {/*The Article Successfully saved.*/}
-          {/*/!*{articles.error}*!/*/}
-          {/*</Message>*/}
+          <Message size='tiny'
+                   success={alert.type === 'alert-success'}
+                   warning={alert.type === 'alert-error'}
+                   negative={alert.type === 'alert-danger'}
+                   hidden={!alert.type}>
+            {alert.message}
+          </Message>
 
           {item &&
           <Form>
@@ -131,6 +141,7 @@ class ArticleDialog extends React.Component {
                 id='articleNumber'
                 name='articleNumber'
                 control={Input}
+                type="number"
                 label='Article Number'
                 placeholder='Article Number'
                 value={item.articleNumber}
@@ -169,6 +180,7 @@ class ArticleDialog extends React.Component {
                 id='price'
                 name='price'
                 control={Input}
+                type="number"
                 label='Price'
                 placeholder='Price'
                 value={item.price}
@@ -187,7 +199,7 @@ class ArticleDialog extends React.Component {
 
 
         <Modal.Actions>
-          <Button secondary onClick={this.props.closeEditNewDialog}>
+          <Button secondary onClick={this.handleCloseButton}>
             Close
           </Button>
           <Button
@@ -205,7 +217,7 @@ class ArticleDialog extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { articles, authentication } = state;
+  const { articles, authentication, alert } = state;
   const { user } = authentication;
   const { item } = articles;
   console.log('mapStateToProps > state');
@@ -215,6 +227,7 @@ function mapStateToProps(state) {
     articles,
     item: state.articles.item,
     items: state.articles.items,
+    alert: state.alert,
   };
 }
 

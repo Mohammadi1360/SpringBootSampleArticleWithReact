@@ -121,8 +121,14 @@ function deleteArticle(id) {
     dispatch(request(id));
     articleService.deleteArticle(id)
       .then(
-        article => dispatch(success(id)),
-        error => dispatch(failure(id, error.toString())),
+        article => {
+          dispatch(success(id));
+          dispatch(alertActions.success('Delete successfully'));
+        },
+        error => {
+          dispatch(failure(id, error.toString()));
+          dispatch(alertActions.error(error.toString()));
+        },
       );
   };
 

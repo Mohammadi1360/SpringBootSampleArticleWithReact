@@ -71,25 +71,25 @@ export function articles(state = initialState, action) {
         items: state.items.filter(article => article.id !== action.id),
       };
     case articleConstants.DELETE_FAILURE:
+      // return {
+      //   ...state,
+      //   error: action.error,
+      //   items: state.items.filter(article => article.id !== action.id),
+      // };
+      // remove 'deleting:true' property and add 'deleteError:[error]' property to user
       return {
         ...state,
-        error: action.error,
-        items: state.items.filter(article => article.id !== action.id),
+        items: state.items.map(article => {
+          if (article.id === action.id) {
+            // make copy of article without 'deleting:true' property
+            const { deleting, ...articleCopy } = article;
+            // return copy of article with 'deleteError:[error]' property
+            return { ...articleCopy, deleteError: action.error };
+          }
+
+          return article;
+        }),
       };
-    // remove 'deleting:true' property and add 'deleteError:[error]' property to user
-    // return {
-    //   ...state,
-    //   items: state.items.map(article => {
-    //     if (article.id === action.id) {
-    //       // make copy of article without 'deleting:true' property
-    //       const { deleting, ...articleCopy } = article;
-    //       // return copy of article with 'deleteError:[error]' property
-    //       return { ...articleCopy, deleteError: action.error };
-    //     }
-    //
-    //     return article;
-    //   }),
-    // };
 
     case articleConstants.REGISTER_REQUEST:
       return {
