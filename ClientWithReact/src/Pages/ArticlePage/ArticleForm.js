@@ -6,9 +6,8 @@ import { ArticleDialog } from '../ArticlePage/ArticleDialog';
 import _ from 'lodash';
 
 import { Button, Card, Form, Icon, Message, Modal, Radio, Segment, Table } from 'semantic-ui-react';
-
-import { articles } from '../../_reducers/articles.reducer';
 import { FORM_EDIT, FORM_INSERT } from '../../_constants/common.constants';
+import { Menu } from 'semantic-ui-react/dist/commonjs/collections/Menu/Menu';
 
 const defaultItem = {
   id: '',
@@ -22,13 +21,9 @@ const defaultItem = {
 class ArticleForm extends React.Component {
 
   constructor(props) {
-    console.log('constructor =>>');
     super(props);
     this.state = {
-      column: null,
-      data: articles.items,
       size: 'small',
-      direction: null,
       openEditNewDialog: false,
       openConfirmation: false,
       selectedId: 0,
@@ -45,25 +40,6 @@ class ArticleForm extends React.Component {
   handleRowChange = (e, { value }) => {
     this.setState({ selectedId: value });
   };
-
-  // handleSort = (clickedColumn) => () => {
-  //   const { column, data, direction } = this.state;
-  //
-  //   if (column !== clickedColumn) {
-  //     this.setState({
-  //       column: clickedColumn,
-  //       data: _.sortBy(data, [clickedColumn]),
-  //       direction: 'ascending',
-  //     });
-  //
-  //     return;
-  //   }
-  //
-  //   this.setState({
-  //     data: data.reverse(),
-  //     direction: direction === 'ascending' ? 'descending' : 'ascending',
-  //   });
-  // };
 
   onRowClick = (rowInfo) => {
     console.log(rowInfo);
@@ -146,8 +122,6 @@ class ArticleForm extends React.Component {
       item[name] = value;
 
     this.setState({ item });
-
-    // console.log(item);
   };
 
   deleteSelectedItem = () => {
@@ -155,7 +129,6 @@ class ArticleForm extends React.Component {
     this.props.dispatch(articleActions.deleteArticle(this.state.selectedId));
     this.closeConfirmationDialog();
   };
-
 
   render() {
     const { user, articles, alert } = this.props;
@@ -167,7 +140,7 @@ class ArticleForm extends React.Component {
       errorList = [];
     }
 
-    const { column, item, direction, openConfirmation, openEditNewDialog, dimmer, formMode } = this.state;
+    const { openConfirmation, openEditNewDialog, dimmer, formMode } = this.state;
 
     return (
       <Fragment>
@@ -186,11 +159,7 @@ class ArticleForm extends React.Component {
 
             <Segment inverted>
               <Form inverted>
-                <Form.Input fluid label='Article Name'
-                            name='articleName'
-                            value={this.state.item.articleName}
-                            onChange={this.handleItemChanges}
-                            placeholder='Article Name'/>
+
 
                 <Form.Group widths='equal'>
                   <Form.Input fluid label='RFID'
@@ -214,25 +183,38 @@ class ArticleForm extends React.Component {
                               onChange={this.handleItemChanges}
                               placeholder='Price'/>
                 </Form.Group>
-                <Form.Checkbox checked={true} label='Client Side'/>
 
-                <Button
-                  primary
-                  icon='search'
-                  labelPosition='right'
-                  content="Search"
-                  onClick={() => {
-                    this.handleSearch(false);
-                  }}/>
+                <Form.Group widths='equal' inline>
+                  <Form.Input fluid label='Article Name'
+                              name='articleName'
+                              value={this.state.item.articleName}
+                              onChange={this.handleItemChanges}
+                              placeholder='Article Name'/>
 
-                <Button
-                  primary
-                  icon='Clear'
-                  labelPosition='right'
-                  content="Clear"
-                  onClick={() => {
-                    this.handleSearch(true);
-                  }}/>
+
+                  <Form.Checkbox checked={true}
+                                 label='Client Side'/>
+
+                  <Button
+                    primary
+                    icon='delete'
+                    labelPosition='right'
+                    content="Clear"
+                    onClick={() => {
+                      this.handleSearch(true);
+                    }}/>
+
+                  <Button
+                    primary
+                    icon='search'
+                    labelPosition='right'
+                    content="Search"
+                    onClick={() => {
+                      this.handleSearch(false);
+                    }}/>
+
+                </Form.Group>
+
 
               </Form>
             </Segment>

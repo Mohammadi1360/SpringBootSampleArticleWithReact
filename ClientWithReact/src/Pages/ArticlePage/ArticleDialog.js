@@ -1,12 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { articleActions } from '../../_actions';
-import _ from 'lodash';
 
-import { Button, Form, Input, Modal, Message } from 'semantic-ui-react';
-
-import { articles } from '../../_reducers/articles.reducer';
-import { FORM_EDIT, FORM_INSERT } from '../../_constants/common.constants';
+import { Button, Form, Input, Message, Modal } from 'semantic-ui-react';
 
 const defaultItem = {
   id: '',
@@ -20,49 +16,19 @@ const defaultItem = {
 class ArticleDialog extends React.Component {
 
   constructor(props) {
-    console.log('constructor =>>');
     super(props);
     this.state = {
-      column: null,
-      direction: null,
-      openEditNewDialog: false,
-      openConfirmation: false,
-      openWarning: false,
-      selectedRow: -1,
-      formMode: FORM_INSERT,
       item: defaultItem,
     };
   }
 
-  // componentDidMount() {
-  //   console.log('componentDidMount =>>1');
-  //   console.log(this.props.item);
-  // }
-
   componentDidUpdate(prevProps) {
-    // console.log('componentDidUpdate11 =>>');
-    // // console.log(articles.items);
-    // console.log(this.props.item);
-
     if (this.props.item && this.state.item.id !== this.props.item.id) {
       this.setState({
         item: this.props.item,
       });
     }
   }
-
-  // componentWillReceiveProps() {
-  //   console.log('componentWillReceiveProps =>>');
-  //   const { item } = this.props;
-  //   console.log(item);
-  //   // if (item) this.setState(prevState => ({ item: prevState.item = item }));
-  // }
-
-  // componentWillUpdate() {
-  //   console.log('componentWillUpdate1 =>>');
-  //   console.log(articles.items);
-  //   console.log(this.props.item);
-  // }
 
   handleItemChanges = (event) => {
     const target = event.target;
@@ -78,36 +44,24 @@ class ArticleDialog extends React.Component {
     console.log('this.state.item:');
     console.log(this.state.item);
     this.props.dispatch(articleActions.saveArticle(this.state.item));
-    // this.setState({ showSuccessMessage: true });
-    // this.closeEditNewDialog();
   };
 
   handleCloseButton = () => {
     this.setState({ item: defaultItem });
     this.props.closeEditNewDialog();
-
-    // this.setState({ showSuccessMessage: true });
-    // this.closeEditNewDialog();
   };
 
   render() {
-    const { user, articles, dimmer, openEditNewDialog, alert } = this.props;
+    const { articles, dimmer, openEditNewDialog, alert } = this.props;
     let { item } = this.state;
-    // const { item } = this.props;
-    console.log('alert');
-    console.log(alert);
     let errorList = [];
-
     try {
       errorList = JSON.parse(articles.error);
     } catch (e) {
       errorList = [];
     }
 
-
     return (
-
-
       <Modal dimmer={dimmer} open={openEditNewDialog} onClose={this.handleCloseButton}>
         <Modal.Header>
           New Article
@@ -218,15 +172,9 @@ class ArticleDialog extends React.Component {
 
 function mapStateToProps(state) {
   const { articles, authentication, alert } = state;
-  const { user } = authentication;
-  const { item } = articles;
-  console.log('mapStateToProps > state');
-  console.log(state);
   return {
-    user,
     articles,
     item: state.articles.item,
-    items: state.articles.items,
     alert: state.alert,
   };
 }
