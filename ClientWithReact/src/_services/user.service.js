@@ -58,7 +58,7 @@ function register(user) {
     body: JSON.stringify(user),
   };
 
-  return fetch(`${config.url.API_URL}/users/register`, requestOptions).then(handleResponse);
+  return fetch(`${config.url.API_URL}/api/user/register`, requestOptions).then(handleResponse);
 }
 
 function update(user) {
@@ -93,7 +93,7 @@ function handleResponse(response) {
       }
 
       const error = (data && data.message) || response.statusText;
-      return Promise.reject(error);
+      return Promise.reject(text);
     }
 
     return data;

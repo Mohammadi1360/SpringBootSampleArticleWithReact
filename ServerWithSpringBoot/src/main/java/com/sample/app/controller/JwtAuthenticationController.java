@@ -5,6 +5,7 @@ import com.sample.app.dto.UserDto;
 import com.sample.app.model.JwtRequest;
 import com.sample.app.model.JwtResponse;
 import com.sample.app.services.JwtUserDetailsService;
+import com.sample.app.services.MapValidationErrorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,7 +13,10 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * Created by M.Mohammadi
@@ -23,6 +27,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 @CrossOrigin
 public class JwtAuthenticationController {
+
+    @Autowired
+    private MapValidationErrorService mapValidationErrorService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -47,9 +54,9 @@ public class JwtAuthenticationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> saveUser(@RequestBody UserDto user) throws Exception {
-        if (userDetailsService.existsUser(user.getUsername()))
-            return ResponseEntity.status(500).body("User Exists Error");
+    public ResponseEntity<?> saveUser(@Valid @RequestBody UserDto user, BindingResult result) throws Exception {
+        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        if (errorMap != null) return errorMap;
 
         return ResponseEntity.ok(userDetailsService.save(user));
     }

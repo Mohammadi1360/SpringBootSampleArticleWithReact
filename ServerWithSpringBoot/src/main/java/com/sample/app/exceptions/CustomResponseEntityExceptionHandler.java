@@ -18,8 +18,21 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler
-    public final ResponseEntity<Object> handleArticleIfException(ArticleRfIdException ex, WebRequest request){
+    public final ResponseEntity<Object> handleArticleIfException(ArticleRfIdException ex, WebRequest request) {
         ArticleRfIdExceptionResponse exceptionResponse = new ArticleRfIdExceptionResponse((ex.getMessage()));
-        return  new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleUserUsernameException(UserUserNameException ex, WebRequest request) {
+        UserUserNameExceptionResponse exceptionResponse = new UserUserNameExceptionResponse((ex.getMessage()));
+        return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleUserEmailAddressException(UserEmailAddressException ex, WebRequest request) {
+        UserEmailAddressExceptionResponse exceptionResponse = new UserEmailAddressExceptionResponse((ex.getMessage()));
+        return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
 }

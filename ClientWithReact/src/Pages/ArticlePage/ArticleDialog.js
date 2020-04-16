@@ -171,7 +171,7 @@ class ArticleDialog extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { articles, authentication, alert } = state;
+  const { articles } = state;
   return {
     articles,
     item: state.articles.item,

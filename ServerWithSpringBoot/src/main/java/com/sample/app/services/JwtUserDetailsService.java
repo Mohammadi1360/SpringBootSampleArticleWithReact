@@ -1,7 +1,9 @@
 package com.sample.app.services;
 
-import com.sample.app.model.User;
 import com.sample.app.dto.UserDto;
+import com.sample.app.exceptions.UserEmailAddressException;
+import com.sample.app.exceptions.UserUserNameException;
+import com.sample.app.model.User;
 import com.sample.app.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,15 +38,29 @@ public class JwtUserDetailsService implements UserDetailsService {
                 new ArrayList<>());
     }
 
-    public boolean existsUser(String username) {
-        User user = userRepository.findByUsername(username);
-        return (user != null);
-    }
-
     public User save(UserDto user) {
         User newUser = new User();
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
+        newUser.setEmailAddress(user.getEmailAddress());
         newUser.setUsername(user.getUsername());
         newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-        return userRepository.save(newUser);
+
+        User existsUser = userRepository.findByUsername(newUser.getUsername());
+        if (existsUser != null) {
+            throw new UserUserNameException("User with UserName " + existsUser.getUsername() + " is already exists.");
+        }
+
+        existsUser = userRepository.findByEmailAddress(newUser.getEmailAddress());
+        if (existsUser != null) {
+            throw new UserEmailAddressException("User with Email Address  " + existsUser.getEmailAddress() + " is already exists.");
+        }
+
+        try {
+            return userRepository.save(newUser);
+        } catch (Exception e) {
+            throw new UserUserNameException("Unknown Error.");
+        }
+
     }
 }

@@ -14,6 +14,10 @@ class TopMenu extends React.Component {
     this.props.history.push('/login');
   };
 
+  register = () => {
+    this.props.history.push('/signup');
+  };
+
 
   render() {
     const { user } = this.props;
@@ -29,7 +33,7 @@ class TopMenu extends React.Component {
               {!user ? 'Login' : 'Logout'}
             </Menu.Item>
 
-            <Menu.Item as="a" name="register">
+            <Menu.Item as="a" name="register" onClick={this.register}>
               Register
             </Menu.Item>
           </Menu.Menu>

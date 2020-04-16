@@ -16,6 +16,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank(message = "First Name is required")
+    private String firstName;
+
+    @NotBlank(message = "Last Name is required")
+    private String lastName;
+
+    @NotBlank(message = "Email Address is required")
+    @Column(unique = true)
+    private String emailAddress;
+
     @NotBlank(message = "UserName is required")
     @Column(unique = true)
     private String username;
@@ -23,6 +33,39 @@ public class User {
     @Column
     @JsonIgnore
     private String password;
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
 
     public String getUsername() {
         return username;
@@ -39,5 +82,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }
