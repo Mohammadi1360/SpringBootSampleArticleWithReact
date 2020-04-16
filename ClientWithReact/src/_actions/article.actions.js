@@ -2,6 +2,7 @@ import { articleConstants, userConstants } from '../_constants';
 import { articleService, userService } from '../_services';
 import { alertActions } from './alert.actions';
 import { history } from '../_helpers';
+import _ from 'lodash';
 
 const defaultItem = {
   id: 0,
@@ -15,6 +16,7 @@ const defaultItem = {
 export const articleActions = {
   logout,
   getAllArticles,
+  searchArticles,
   getArticleById,
   deleteArticle,
   saveArticle,
@@ -49,6 +51,18 @@ function getAllArticles() {
 
   function failure(error) {
     return { type: articleConstants.GETALL_FAILURE, error };
+  }
+}
+
+function searchArticles(items, item) {
+  items = _.filter(items, item);
+
+  return dispatch => {
+    dispatch(success(items));
+  };
+
+  function success(articles) {
+    return { type: articleConstants.CLIENT_SEARCH_REQUEST, articles };
   }
 }
 

@@ -13,7 +13,6 @@ class HomePage extends React.Component {
       <div className="col-md-6 col-md-offset-3">
         <TopMenu/>
         <h1>{user.username}</h1>
-
         <ArticleForm/>
 
       </div>

@@ -2,6 +2,7 @@ import { articleConstants } from '../_constants';
 
 const initialState = {
   items: [],
+  itemsAfterSearch: [],
   item: {},
   error: false,
   loading: false,
@@ -13,6 +14,7 @@ export function articles(state = initialState, action) {
       return {
         ...state,
         items: [],
+        itemsAfterSearch: [],
         loading: true,
         error: false,
       };
@@ -20,6 +22,7 @@ export function articles(state = initialState, action) {
       return {
         ...state,
         items: action.articles,
+        itemsAfterSearch: action.articles,
         loading: false,
         error: false,
       };
@@ -27,6 +30,7 @@ export function articles(state = initialState, action) {
       return {
         ...state,
         items: [],
+        itemsAfterSearch: [],
         loading: false,
         error: action.error,
       };
@@ -45,6 +49,14 @@ export function articles(state = initialState, action) {
         loading: false,
         error: false,
       };
+    case articleConstants.CLIENT_SEARCH_REQUEST:
+      return {
+        ...state,
+        itemsAfterSearch: action.articles,
+        loading: false,
+        error: false,
+      };
+
     case articleConstants.GET_FAILURE:
       return {
         ...state,
@@ -62,6 +74,11 @@ export function articles(state = initialState, action) {
             ? { ...article, deleting: true }
             : article,
         ),
+        itemsAfterSearch: state.items.map(article =>
+          article.id === action.id
+            ? { ...article, deleting: true }
+            : article,
+        ),
       };
     case articleConstants.DELETE_SUCCESS:
       // remove deleted article from state
@@ -69,6 +86,7 @@ export function articles(state = initialState, action) {
         ...state,
         error: false,
         items: state.items.filter(article => article.id !== action.id),
+        itemsAfterSearch: state.items.filter(article => article.id !== action.id),
       };
     case articleConstants.DELETE_FAILURE:
       // return {
@@ -80,6 +98,16 @@ export function articles(state = initialState, action) {
       return {
         ...state,
         items: state.items.map(article => {
+          if (article.id === action.id) {
+            // make copy of article without 'deleting:true' property
+            const { deleting, ...articleCopy } = article;
+            // return copy of article with 'deleteError:[error]' property
+            return { ...articleCopy, deleteError: action.error };
+          }
+
+          return article;
+        }),
+        itemsAfterSearch: state.items.map(article => {
           if (article.id === action.id) {
             // make copy of article without 'deleting:true' property
             const { deleting, ...articleCopy } = article;

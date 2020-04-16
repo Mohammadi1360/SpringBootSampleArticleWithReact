@@ -1,32 +1,23 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { articleActions, alertActions } from '../../_actions';
+import { alertActions, articleActions } from '../../_actions';
 import { ArticleDialog } from '../ArticlePage/ArticleDialog';
 
 import _ from 'lodash';
 
-import {
-  Table,
-  Button,
-  Card,
-  Icon,
-  Modal,
-  Radio,
-  Message,
-  Image,
-  Header,
-  Form,
-  Input,
-  Select,
-  TextArea,
-  Grid,
-} from 'semantic-ui-react';
+import { Button, Card, Form, Icon, Message, Modal, Radio, Segment, Table } from 'semantic-ui-react';
 
 import { articles } from '../../_reducers/articles.reducer';
 import { FORM_EDIT, FORM_INSERT } from '../../_constants/common.constants';
-import { default as CardHeader } from 'semantic-ui-react/dist/commonjs/views/Card/CardHeader';
 
+const defaultItem = {
+  id: '',
+  rfid: '',
+  articleName: '',
+  articleNumber: '',
+  storageLocation: '',
+  price: '',
+};
 
 class ArticleForm extends React.Component {
 
@@ -42,6 +33,7 @@ class ArticleForm extends React.Component {
       openConfirmation: false,
       selectedId: 0,
       formMode: FORM_INSERT,
+      item: defaultItem,
     };
   }
 
@@ -54,24 +46,24 @@ class ArticleForm extends React.Component {
     this.setState({ selectedId: value });
   };
 
-  handleSort = (clickedColumn) => () => {
-    const { column, data, direction } = this.state;
-
-    if (column !== clickedColumn) {
-      this.setState({
-        column: clickedColumn,
-        data: _.sortBy(data, [clickedColumn]),
-        direction: 'ascending',
-      });
-
-      return;
-    }
-
-    this.setState({
-      data: data.reverse(),
-      direction: direction === 'ascending' ? 'descending' : 'ascending',
-    });
-  };
+  // handleSort = (clickedColumn) => () => {
+  //   const { column, data, direction } = this.state;
+  //
+  //   if (column !== clickedColumn) {
+  //     this.setState({
+  //       column: clickedColumn,
+  //       data: _.sortBy(data, [clickedColumn]),
+  //       direction: 'ascending',
+  //     });
+  //
+  //     return;
+  //   }
+  //
+  //   this.setState({
+  //     data: data.reverse(),
+  //     direction: direction === 'ascending' ? 'descending' : 'ascending',
+  //   });
+  // };
 
   onRowClick = (rowInfo) => {
     console.log(rowInfo);
@@ -132,6 +124,32 @@ class ArticleForm extends React.Component {
     this.setState({ openConfirmation: false });
   };
 
+  handleSearch = (clear) => {
+    let item = {};
+    if (!clear)
+      item = _.pickBy(this.state.item);
+    else
+      this.setState({ item: defaultItem });
+
+    this.props.dispatch(articleActions.searchArticles(this.props.items, item));
+  };
+
+  handleItemChanges = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    let item = { ...this.state.item };
+
+    if (name === 'articleNumber' || name === 'price') {
+      item[name] = Number(value);
+    } else
+      item[name] = value;
+
+    this.setState({ item });
+
+    // console.log(item);
+  };
+
   deleteSelectedItem = () => {
     console.log(this.state.selectedId);
     this.props.dispatch(articleActions.deleteArticle(this.state.selectedId));
@@ -166,6 +184,59 @@ class ArticleForm extends React.Component {
           <Card.Content>
             <Card.Header>Article List</Card.Header>
 
+            <Segment inverted>
+              <Form inverted>
+                <Form.Input fluid label='Article Name'
+                            name='articleName'
+                            value={this.state.item.articleName}
+                            onChange={this.handleItemChanges}
+                            placeholder='Article Name'/>
+
+                <Form.Group widths='equal'>
+                  <Form.Input fluid label='RFID'
+                              name='rfid'
+                              value={this.state.item.rfid}
+                              onChange={this.handleItemChanges}
+                              placeholder='RFID'/>
+                  <Form.Input fluid label='Article Number'
+                              name='articleNumber'
+                              value={this.state.item.articleNumber}
+                              onChange={this.handleItemChanges}
+                              placeholder='Article Number'/>
+                  <Form.Input fluid label='Storage Location'
+                              name='storageLocation'
+                              value={this.state.item.storageLocation}
+                              onChange={this.handleItemChanges}
+                              placeholder='Storage Location'/>
+                  <Form.Input fluid label='Price'
+                              name='price'
+                              value={this.state.item.price}
+                              onChange={this.handleItemChanges}
+                              placeholder='Price'/>
+                </Form.Group>
+                <Form.Checkbox checked={true} label='Client Side'/>
+
+                <Button
+                  primary
+                  icon='search'
+                  labelPosition='right'
+                  content="Search"
+                  onClick={() => {
+                    this.handleSearch(false);
+                  }}/>
+
+                <Button
+                  primary
+                  icon='Clear'
+                  labelPosition='right'
+                  content="Clear"
+                  onClick={() => {
+                    this.handleSearch(true);
+                  }}/>
+
+              </Form>
+            </Segment>
+
 
             <Table celled fixed striped selectable>
               <Table.Header>
@@ -173,41 +244,31 @@ class ArticleForm extends React.Component {
                   <Table.HeaderCell width={1}>
                   </Table.HeaderCell>
 
-                  <Table.HeaderCell width={1}
-                                    sorted={column === 'rfid' ? direction : null}
-                                    onClick={this.handleSort('rfid')}>
+                  <Table.HeaderCell width={1}>
                     RFID
                   </Table.HeaderCell>
 
-                  <Table.HeaderCell width={5}
-                                    sorted={column === 'articleName' ? direction : null}
-                                    onClick={this.handleSort('articleName')}>
+                  <Table.HeaderCell width={5}>
                     ARTICLE NAME
                   </Table.HeaderCell>
 
 
-                  <Table.HeaderCell width={2}
-                                    sorted={column === 'articleNumber' ? direction : null}
-                                    onClick={this.handleSort('articleNumber')}>
+                  <Table.HeaderCell width={2}>
                     ARTICLE NUMBER
                   </Table.HeaderCell>
 
-                  <Table.HeaderCell width={2}
-                                    sorted={column === 'storageLocation' ? direction : null}
-                                    onClick={this.handleSort('storageLocation')}>
+                  <Table.HeaderCell width={2}>
                     STORAGE LOCATION
                   </Table.HeaderCell>
 
-                  <Table.HeaderCell width={2}
-                                    sorted={column === 'price' ? direction : null}
-                                    onClick={this.handleSort('price')}>
-                    PRISE
+                  <Table.HeaderCell width={2}>
+                    PRICE
                   </Table.HeaderCell>
 
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {articles.items && _.map(articles.items, ({ id, rfid, articleName, articleNumber, storageLocation, price }) => (
+                {articles.itemsAfterSearch && _.map(articles.itemsAfterSearch, ({ id, rfid, articleName, articleNumber, storageLocation, price }) => (
                   <Table.Row key={id} onClick={this.onRowClick}>
                     <Table.Cell collapsing verticalAlign='center'>
                       <Radio
@@ -301,6 +362,7 @@ function mapStateToProps(state) {
   return {
     item: state.articles.item,
     items: state.articles.items,
+    itemsAfterSearch: state.articles.itemsAfterSearch,
     user,
     articles,
     alert: state.alert,

@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8cd0188-b28e-4a41-866e-100011b0f5ea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/Menu/TopMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/ArticlePage/ArticleForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/ArticlePage/ArticleForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/HomePage/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/HomePage/HomePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/LoginPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/LoginPage/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Menu/Menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/controller/JwtAuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/controller/JwtAuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_actions/article.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/_actions/article.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_constants/article.constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/_constants/article.constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_reducers/articles.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/_reducers/articles.reducer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -74,7 +70,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="1" />
-          <entry key="js" value="92" />
+          <entry key="js" value="100" />
           <entry key="json" value="2" />
           <entry key="jsx" value="4" />
           <entry key="ts" value="15" />
@@ -85,22 +81,22 @@
           <entry key="HTML" value="1" />
           <entry key="JSON" value="2" />
           <entry key="JSX Harmony" value="4" />
-          <entry key="JavaScript" value="92" />
+          <entry key="JavaScript" value="100" />
           <entry key="TypeScript" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="2173" />
-          <entry key="jsx" value="1247" />
-          <entry key="txt" value="254" />
+          <entry key="js" value="2944" />
+          <entry key="jsx" value="1256" />
+          <entry key="txt" value="311" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSX Harmony" value="1247" />
-          <entry key="JavaScript" value="2173" />
-          <entry key="PLAIN_TEXT" value="254" />
+          <entry key="JSX Harmony" value="1256" />
+          <entry key="JavaScript" value="2944" />
+          <entry key="PLAIN_TEXT" value="311" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -124,28 +120,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pages/HomePage/HomePage.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+            <state relative-caret-position="100">
+              <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Pages/ArticlePage/ArticleForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pages/HomePage/index.js">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/_constants/article.constants.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="23" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pages/ArticlePage/ArticleDialog.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="226" column="13" lean-forward="true" selection-start-line="226" selection-start-column="13" selection-end-line="226" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/_actions/article.actions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+              <folding>
+                <element signature="e#0#64#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/_reducers/articles.reducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getById</find>
-      <find>getAll</find>
-      <find>err</find>
-      <find>feil</find>
       <find>pointing</find>
       <find>error</find>
       <find>loading</find>
@@ -172,6 +213,10 @@
       <find>alert</find>
       <find>Warning</find>
       <find>location.re</find>
+      <find>filter</find>
+      <find>sort</find>
+      <find>items</find>
+      <find>handleSearch</find>
     </findStrings>
     <replaceStrings>
       <replace>items</replace>
@@ -208,17 +253,12 @@
         <option value="$PROJECT_DIR$/src/Pages/HomePage/table/TableRow.jsx" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/_constants/user.constants.js" />
-        <option value="$PROJECT_DIR$/src/_constants/article.constants.js" />
         <option value="$PROJECT_DIR$/src/_actions/user.actions.js" />
         <option value="$PROJECT_DIR$/src/_reducers/index.js" />
         <option value="$PROJECT_DIR$/src/_helpers/auth-header.js" />
         <option value="$PROJECT_DIR$/src/_constants/index.js" />
         <option value="$PROJECT_DIR$/src/_constants/common.constants.js" />
         <option value="$PROJECT_DIR$/src/_helpers/store.js" />
-        <option value="$PROJECT_DIR$/src/Pages/ArticlePage/ArticleDialog.js" />
-        <option value="$PROJECT_DIR$/src/Pages/ArticlePage/ArticleForm.js" />
-        <option value="$PROJECT_DIR$/src/_reducers/articles.reducer.js" />
-        <option value="$PROJECT_DIR$/src/_actions/article.actions.js" />
         <option value="$PROJECT_DIR$/src/_services/article.service.js" />
         <option value="$PROJECT_DIR$/src/_services/user.service.js" />
         <option value="$PROJECT_DIR$/src/Pages/Menu/Menu.js" />
@@ -227,6 +267,11 @@
         <option value="$PROJECT_DIR$/src/Pages/LoginPage/LoginPage.js" />
         <option value="$PROJECT_DIR$/src/Pages/Menu/TopMenu.js" />
         <option value="$PROJECT_DIR$/src/Pages/HomePage/HomePage.jsx" />
+        <option value="$PROJECT_DIR$/src/_constants/article.constants.js" />
+        <option value="$PROJECT_DIR$/src/Pages/ArticlePage/ArticleDialog.js" />
+        <option value="$PROJECT_DIR$/src/_actions/article.actions.js" />
+        <option value="$PROJECT_DIR$/src/_reducers/articles.reducer.js" />
+        <option value="$PROJECT_DIR$/src/Pages/ArticlePage/ArticleForm.js" />
       </list>
     </option>
   </component>
@@ -428,7 +473,7 @@
       <workItem from="1586679198756" duration="12233000" />
       <workItem from="1586846292949" duration="10297000" />
       <workItem from="1586880830175" duration="13529000" />
-      <workItem from="1586937256050" duration="13042000" />
+      <workItem from="1586937256050" duration="24035000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Delete Article .">
       <created>1586731135995</created>
@@ -465,11 +510,18 @@
       <option name="project" value="LOCAL" />
       <updated>1586988932588</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fix Delete Archive Message ,&#10;Fix Logo and Logout button.">
+      <created>1586992954880</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586992954880</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103578000" />
+    <option name="totallyTimeSpent" value="114571000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -518,10 +570,10 @@
     <MESSAGE value="Fix Error Message,&#10;Form Validation fixed.&#10;..." />
     <MESSAGE value="Make Edit Article Dialog .&#10;Fix Some redux loading data problem ." />
     <MESSAGE value="Fix Messages,&#10;Fix token reload location after expiring token." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Messages,&#10;Fix token reload location after expiring token." />
+    <MESSAGE value="Fix Delete Archive Message ,&#10;Fix Logo and Logout button." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Delete Archive Message ,&#10;Fix Logo and Logout button." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/App.test.js" />
     <entry file="file://$PROJECT_DIR$/src/Pages/HomePage/table/PageSizeSelect.jsx" />
     <entry file="file://$PROJECT_DIR$/src/Pages/HomePage/table/TableFilter.jsx" />
     <entry file="file://$PROJECT_DIR$/src/Pages/HomePage/table/TableHeader.jsx" />
@@ -601,13 +653,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/common.js" />
     <entry file="file://$PROJECT_DIR$/src/utils/constants/defaultValues.js" />
-    <entry file="file://$PROJECT_DIR$/src/_constants/article.constants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="17" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/_constants/common.constants.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -705,50 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/ArticlePage/ArticleDialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="93" column="60" selection-start-line="93" selection-start-column="55" selection-end-line="93" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/ArticlePage/ArticleForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="136" column="47" selection-start-line="136" selection-start-column="47" selection-end-line="136" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/_actions/article.actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="121" column="27" selection-start-line="121" selection-start-column="27" selection-end-line="121" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/_reducers/articles.reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="65" column="40" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/_actions/user.actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="53" column="31" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/_services/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -756,16 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/_services/article.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -827,13 +818,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/HomePage/HomePage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/lodash/lodash.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="573" column="22" selection-start-line="573" selection-start-column="11" selection-end-line="573" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/_constants/article.constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/_services/article.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/HomePage/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/HomePage/HomePage.jsx">
+    <entry file="file://$PROJECT_DIR$/src/_actions/user.actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        <state relative-caret-position="540">
+          <caret line="51" column="18" lean-forward="true" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/ArticlePage/ArticleDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="226" column="13" lean-forward="true" selection-start-line="226" selection-start-column="13" selection-end-line="226" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/_reducers/articles.reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/_actions/article.actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/ArticlePage/ArticleForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
