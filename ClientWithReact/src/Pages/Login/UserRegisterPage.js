@@ -70,7 +70,11 @@ class UserRegisterPage extends React.Component {
     const user = this.state.item;
     const { dispatch } = this.props;
 
-    if (user.username && user.password) {
+    if (user.firstName &&
+      user.lastName &&
+      user.emailAddress &&
+      user.username &&
+      user.password) {
       this.registerUser(user).then(() => {
         const timer = setTimeout(() => {
           if (this.props.alert.type === 'alert-success') {
@@ -113,8 +117,6 @@ class UserRegisterPage extends React.Component {
           </Message>
 
           <Form size='large' onSubmit={this.handleSubmit}>
-
-
             <Segment stacked textAlign='left'>
 
               <Dimmer active={!!alert.type} inverted>
@@ -125,28 +127,24 @@ class UserRegisterPage extends React.Component {
                 <Form.Input fluid
                             name="firstName"
                             onChange={this.handleItemChanges}
-                            required
                             value={item.firstName}
-                            placeholder='First name'/>
+                            placeholder='First name'
+                            error={submitted && !item.firstName}/>
                 <Form.Input fluid
                             name="lastName"
                             onChange={this.handleItemChanges}
-                            required
                             value={item.lastName}
-                            placeholder='Last name'/>
+                            placeholder='Last name'
+                            error={submitted && !item.lastName}/>
               </Form.Group>
 
               <Form.Input
                 id='emailAddress'
                 name="emailAddress"
                 onChange={this.handleItemChanges}
-                required
                 value={item.emailAddress}
                 placeholder='Email Address'
-                // error={{
-                //   content: 'Please enter a valid email address',
-                //   pointing: 'below',
-                // }}
+                error={submitted && !item.emailAddress}
               />
 
               <Form.Group widths='equal'>
@@ -156,8 +154,8 @@ class UserRegisterPage extends React.Component {
                   placeholder='UserName'
                   name="username"
                   onChange={this.handleItemChanges}
-                  required
-                  value={item.username}/>
+                  value={item.username}
+                  error={submitted && !item.username}/>
 
                 <Form.Input
                   fluid
@@ -167,13 +165,8 @@ class UserRegisterPage extends React.Component {
                   type="password"
                   name="password"
                   onChange={this.handleItemChanges}
-                  required
-                  value={item.password}/>
-
-
-                {submitted && !item.password &&
-                <div className="help-block">Password is required</div>
-                }
+                  value={item.password}
+                  error={submitted && !item.password}/>
 
               </Form.Group>
 
