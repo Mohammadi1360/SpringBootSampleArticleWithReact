@@ -130,7 +130,6 @@ class ArticleForm extends React.Component {
       item = _.pickBy(this.state.item);
     else
       this.setState({ item: defaultItem });
-
     this.props.dispatch(articleActions.searchArticles(this.props.items, item));
   };
 
