@@ -50,7 +50,7 @@ class ArticleForm extends React.Component {
     console.log('here1');
   }
 
-  showMessage = (message, type, second) => {
+  showMessage = (message, type, second = 2) => {
     if (type === 'error') {
       this.props.dispatch(alertActions.error(message));
     } else if (type === 'success') {
@@ -128,6 +128,11 @@ class ArticleForm extends React.Component {
     console.log(this.state.selectedId);
     this.props.dispatch(articleActions.deleteArticle(this.state.selectedId));
     this.closeConfirmationDialog();
+
+    const timer = setTimeout(() => {
+      this.props.dispatch(alertActions.clear());
+    }, 3000);
+
   };
 
   render() {
