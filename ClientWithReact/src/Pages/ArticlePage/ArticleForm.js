@@ -107,6 +107,7 @@ class ArticleForm extends React.Component {
   };
 
   closeEditNewDialog = () => {
+    this.props.dispatch(alertActions.clear());
     this.setState({ openEditNewDialog: false });
     this.props.dispatch(articleActions.getAllArticles());
   };
