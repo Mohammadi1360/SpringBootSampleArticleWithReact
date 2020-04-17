@@ -16,6 +16,8 @@ const defaultItem = {
   articleNumber: '',
   storageLocation: '',
   price: '',
+  created_At: '',
+  updated_At: '',
 };
 
 class ArticleForm extends React.Component {
@@ -69,7 +71,7 @@ class ArticleForm extends React.Component {
       this.showMessage('Please Select one item before any action !', 'error', 2);
     } else {
       let id = 0;
-      (formMode === FORM_EDIT ? id = this.state.selectedId : id = 0);
+      if (formMode === FORM_EDIT) id = this.state.selectedId;
 
       this.loadCurrentItem(id).then(() => {
         this.setState({
@@ -201,6 +203,17 @@ class ArticleForm extends React.Component {
                                  label='Client Side'/>
 
                   <Button
+                    positive
+
+                    type="submit"
+                    icon='search'
+                    labelPosition='right'
+                    content="Search"
+                    onClick={() => {
+                      this.handleSearch(false);
+                    }}/>
+
+                  <Button
                     primary
                     icon='delete'
                     labelPosition='right'
@@ -209,14 +222,6 @@ class ArticleForm extends React.Component {
                       this.handleSearch(true);
                     }}/>
 
-                  <Button
-                    primary
-                    icon='search'
-                    labelPosition='right'
-                    content="Search"
-                    onClick={() => {
-                      this.handleSearch(false);
-                    }}/>
 
                 </Form.Group>
 
@@ -257,7 +262,7 @@ class ArticleForm extends React.Component {
               <Table.Body>
                 {articles.itemsAfterSearch && _.map(articles.itemsAfterSearch, ({ id, rfid, articleName, articleNumber, storageLocation, price }) => (
                   <Table.Row key={id} onClick={this.onRowClick}>
-                    <Table.Cell collapsing verticalAlign='center'>
+                    <Table.Cell collapsing className="center aligned">
                       <Radio
                         name='radio1'
                         value={id}

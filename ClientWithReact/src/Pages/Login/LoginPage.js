@@ -6,10 +6,11 @@ import {
   Header,
   Message,
   Image,
-  Segment,
+  Segment, Dimmer, Loader,
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { userActions } from '../../_actions/index';
+import { alertActions, userActions } from '../../_actions/index';
+import { history } from '../../_helpers';
 
 class LoginPage extends React.Component {
 
@@ -34,6 +35,11 @@ class LoginPage extends React.Component {
     this.setState({ [name]: value });
   }
 
+  async loginUser(username, password) {
+    this.props.dispatch(userActions.login(username, password));
+    console.log('here1');
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
@@ -41,12 +47,22 @@ class LoginPage extends React.Component {
     const { username, password } = this.state;
     const { dispatch } = this.props;
     if (username && password) {
-      dispatch(userActions.login(username, password));
+      this.loginUser(username, password).then(() => {
+        const timer = setTimeout(() => {
+          if (this.props.alert.type === 'alert-success') {
+            history.push('/');
+          }
+
+          this.props.dispatch(alertActions.clear());
+        }, 2000);
+      });
+
+      // dispatch(userActions.login(username, password));
     }
   }
 
   render() {
-    const { loggingIn } = this.props;
+    const { loggingIn, alert } = this.props;
     const { username, password, submitted } = this.state;
     return (
 
@@ -57,6 +73,11 @@ class LoginPage extends React.Component {
           </Header>
           <Form size='large' onSubmit={this.handleSubmit}>
             <Segment stacked>
+
+              <Dimmer active={!!alert.type} inverted>
+                <Loader size='medium'>Loading</Loader>
+              </Dimmer>
+
               <Form.Input
                 fluid icon='user'
                 iconPosition='left'
@@ -99,6 +120,7 @@ function mapStateToProps(state) {
   const { loggingIn } = state.authentication;
   return {
     loggingIn,
+    alert: state.alert,
   };
 }
 

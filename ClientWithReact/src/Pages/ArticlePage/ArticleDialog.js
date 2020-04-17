@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { articleActions } from '../../_actions';
-
 import { Button, Form, Input, Message, Modal } from 'semantic-ui-react';
+import _ from 'lodash';
 
 const defaultItem = {
   id: '',
@@ -11,6 +11,8 @@ const defaultItem = {
   articleNumber: '',
   storageLocation: '',
   price: '',
+  created_At: '',
+  updated_At: '',
 };
 
 class ArticleDialog extends React.Component {
@@ -54,6 +56,10 @@ class ArticleDialog extends React.Component {
   render() {
     const { articles, dimmer, openEditNewDialog, alert } = this.props;
     let { item } = this.state;
+    if (_.isEmpty(item)) {
+      item = defaultItem;
+    }
+
     let errorList = [];
     try {
       errorList = JSON.parse(articles.error);
