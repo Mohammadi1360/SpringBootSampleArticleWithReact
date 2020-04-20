@@ -1,7 +1,6 @@
-import { articleConstants, userConstants } from '../_constants';
-import { articleService, userService } from '../_services';
+import { articleConstants } from '../_constants';
+import { articleService } from '../_services';
 import { alertActions } from './alert.actions';
-import { history } from '../_helpers';
 import _ from 'lodash';
 
 const defaultItem = {

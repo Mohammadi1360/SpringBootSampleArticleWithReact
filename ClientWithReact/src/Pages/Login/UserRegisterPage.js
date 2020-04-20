@@ -1,21 +1,9 @@
 import React from 'react';
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment,
-  Dimmer,
-  Loader,
-} from 'semantic-ui-react';
+import { Button, Dimmer, Form, Grid, Header, Image, Loader, Message, Segment } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
-import { alertActions, articleActions, userActions } from '../../_actions/index';
-import { Modal } from 'semantic-ui-react/dist/commonjs/modules/Modal/Modal';
+import { alertActions, userActions } from '../../_actions/index';
 import { history } from '../../_helpers';
-import { alert } from '../../_reducers/alert.reducer';
 
 const defaultItem = {
   firstName: '',
@@ -60,7 +48,6 @@ class UserRegisterPage extends React.Component {
 
   async registerUser(user) {
     this.props.dispatch(userActions.register(user));
-    console.log('here1');
   }
 
   handleSubmit(e) {
@@ -68,7 +55,6 @@ class UserRegisterPage extends React.Component {
 
     this.setState({ submitted: true });
     const user = this.state.item;
-    const { dispatch } = this.props;
 
     if (user.firstName &&
       user.lastName &&
@@ -76,11 +62,10 @@ class UserRegisterPage extends React.Component {
       user.username &&
       user.password) {
       this.registerUser(user).then(() => {
-        const timer = setTimeout(() => {
+        setTimeout(() => {
           if (this.props.alert.type === 'alert-success') {
             history.push('/login');
           }
-
           this.props.dispatch(alertActions.clear());
         }, 3000);
       });
@@ -93,13 +78,6 @@ class UserRegisterPage extends React.Component {
   render() {
     const { loggingIn, alert } = this.props;
     const { item, submitted } = this.state;
-
-    // let errorList = [];
-    // try {
-    //   errorList = JSON.parse(articles.error);
-    // } catch (e) {
-    //   errorList = [];
-    // }
 
     return (
 

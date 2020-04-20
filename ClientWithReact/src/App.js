@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
 import { Container } from 'semantic-ui-react';
-import { Router, Route } from 'react-router-dom';
+import { Route, Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PrivateRoute } from './_components';
 import { alertActions } from './_actions';
 import { history } from './_helpers';
-import { TopMenu } from './Pages/Menu/TopMenu';
 import { LoginPage } from './Pages/Login/LoginPage';
 import { HomePage } from './Pages/HomePage';
 import { UserRegisterPage } from './Pages/Login/UserRegisterPage';
@@ -23,7 +22,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { alert } = this.props;
+    // const { alert } = this.props;
     return (
       <Fragment>
         <Container>

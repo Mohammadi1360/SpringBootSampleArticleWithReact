@@ -2,12 +2,10 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { alertActions, articleActions } from '../../_actions';
 import { ArticleDialog } from '../ArticlePage/ArticleDialog';
-
-import _ from 'lodash';
-
 import { Button, Card, Form, Icon, Message, Modal, Radio, Segment, Table } from 'semantic-ui-react';
 import { FORM_EDIT, FORM_INSERT } from '../../_constants/common.constants';
-import { Menu } from 'semantic-ui-react/dist/commonjs/collections/Menu/Menu';
+import _ from 'lodash';
+
 
 const defaultItem = {
   id: '',
@@ -49,7 +47,6 @@ class ArticleForm extends React.Component {
 
   async loadCurrentItem(id) {
     this.props.dispatch(articleActions.getArticleById(id));
-    console.log('here1');
   }
 
   showMessage = (message, type, second = 2) => {
@@ -59,7 +56,7 @@ class ArticleForm extends React.Component {
       this.props.dispatch(alertActions.success(message));
     }
 
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       this.props.dispatch(alertActions.clear());
     }, second * 1000);
   };
@@ -131,21 +128,21 @@ class ArticleForm extends React.Component {
     this.props.dispatch(articleActions.deleteArticle(this.state.selectedId));
     this.closeConfirmationDialog();
 
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       this.props.dispatch(alertActions.clear());
     }, 3000);
 
   };
 
   render() {
-    const { user, articles, alert } = this.props;
-    let errorList = [];
-
-    try {
-      errorList = JSON.parse(articles.error);
-    } catch (e) {
-      errorList = [];
-    }
+    const { articles, alert } = this.props;
+    // let errorList = [];
+    //
+    // try {
+    //   errorList = JSON.parse(articles.error);
+    // } catch (e) {
+    //   errorList = [];
+    // }
 
     const { openConfirmation, openEditNewDialog, dimmer, formMode } = this.state;
 

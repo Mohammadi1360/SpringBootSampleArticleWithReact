@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Message,
-  Image,
-  Segment, Dimmer, Loader,
-} from 'semantic-ui-react';
+import { Button, Dimmer, Form, Grid, Header, Image, Loader, Message, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { alertActions, userActions } from '../../_actions/index';
 import { history } from '../../_helpers';
@@ -37,7 +29,6 @@ class LoginPage extends React.Component {
 
   async loginUser(username, password) {
     this.props.dispatch(userActions.login(username, password));
-    console.log('here1');
   }
 
   handleSubmit(e) {
@@ -45,10 +36,10 @@ class LoginPage extends React.Component {
 
     this.setState({ submitted: true });
     const { username, password } = this.state;
-    const { dispatch } = this.props;
+    // const { dispatch } = this.props;
     if (username && password) {
       this.loginUser(username, password).then(() => {
-        const timer = setTimeout(() => {
+        setTimeout(() => {
           if (this.props.alert.type === 'alert-success') {
             history.push('/');
           }
@@ -56,8 +47,6 @@ class LoginPage extends React.Component {
           this.props.dispatch(alertActions.clear());
         }, 2000);
       });
-
-      // dispatch(userActions.login(username, password));
     }
   }
 
