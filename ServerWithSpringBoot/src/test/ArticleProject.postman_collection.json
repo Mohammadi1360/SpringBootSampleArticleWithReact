@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "7073c940-28e4-4507-b233-eff61a33c5fa",
+		"name": "ArticleProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"mohammad\",\n\t\"password\":\"12345633\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\":\"Mohammad\",\n\t\"lastName\":\"Mohammadi\",\n\t\"emailAddress\":\"Mohammadi1360@gmail.com\",\n\t\"username\":\"Mohammad\",\n\t\"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Article",
+			"item": [
+				{
+					"name": "Get All Article",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2hhbW1hZCIsImV4cCI6MTU4NjgzMzA1OCwiaWF0IjoxNTg2ODE1MDU4fQ.HTHkIvtqMqfogi6YsK5b77PcE16LBy2QG-8YzLSXCU9yfkjOxv57aA9JvGNhu9OQ4z0SapRGGW9WYLEQ1zDOCQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/api/article",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Article",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2hhbW1hZCIsImV4cCI6MTU4NjgzMzA1OCwiaWF0IjoxNTg2ODE1MDU4fQ.HTHkIvtqMqfogi6YsK5b77PcE16LBy2QG-8YzLSXCU9yfkjOxv57aA9JvGNhu9OQ4z0SapRGGW9WYLEQ1zDOCQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":0,\n\t\"rfid\":\"15\",\n\t\"articleName\":\"articleName7\",\n\t\"articleNumber\":\"6777\",\n\t\"storageLocation\":\"storageLocation 7\",\n\t\"price\":\"37770\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/article",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Article By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2hhbW1hZCIsImV4cCI6MTU4Njc4MTI3OSwiaWF0IjoxNTg2NzYzMjc5fQ.6y_SB98KrRMp6WizDRTsi2tCMuN_cPmmQiDPI5sOmQaqsK2a5kU8j3FOmB2pzx_poumERVUetgb2k25hbCZ1ZA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\"id\":2,\n\t\"articleName\":\"projectss 2\",\n\t\"articleIdentifier\":\"id 2\",\n\t\"description\":\"descriptionss 2\",\n\t\"start_date\":\"2020-01-05\",\n\t\"end_date\":\"2020-02-06\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/article/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"article",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Article By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2hhbW1hZCIsImV4cCI6MTU4Njc0NjI4MCwiaWF0IjoxNTg2NzI4MjgwfQ.ZJvoAnrYqU2ffVsT0NGPfwIO8RrJAA5YnX0PimBPIsP5ticbT1qWDckrXL4DxfjEp-EOMfMSn4J10kTfu8Mzzw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/api/article/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"article",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Hello World",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2hhbW1hZCIsImV4cCI6MTU4NjU1Mzg4NSwiaWF0IjoxNTg2NTM1ODg1fQ.PG-UIIIn9mFUYzxV20Fms3DfbwyVJ4xdwzCcpL2Vrc18Ucz07BxTx_ygkqfGxCKElqBUdRHme4ywsO6QF2VAYQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/api/world/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"world",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

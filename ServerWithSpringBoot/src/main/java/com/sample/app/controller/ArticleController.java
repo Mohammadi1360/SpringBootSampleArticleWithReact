@@ -33,8 +33,7 @@ public class ArticleController {
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if (errorMap != null) return errorMap;
 
-        articleService.saveOrUpdateArticle(article);
-
+        article = articleService.saveOrUpdateArticle(article);
         return new ResponseEntity<Article>(article, HttpStatus.CREATED);
     }
 
