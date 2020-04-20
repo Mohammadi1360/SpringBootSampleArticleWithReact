@@ -15,7 +15,7 @@ class TopMenu extends React.Component {
   };
 
   register = () => {
-    this.props.history.push('/signup');
+    this.props.history.push('/register');
   };
 
 

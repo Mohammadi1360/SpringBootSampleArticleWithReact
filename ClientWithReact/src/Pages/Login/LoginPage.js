@@ -68,8 +68,9 @@ class LoginPage extends React.Component {
 
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='teal' textAlign='center'>
-            <Image src='/logo.png'/> Log-in to your account
+          <Header as='h2' color='teal' textAlign='left'>
+            Log-in to your account
+            <Image style={{ width: 120 }} src='/logo2.png'/>
           </Header>
           <Form size='large' onSubmit={this.handleSubmit}>
             <Segment stacked>
