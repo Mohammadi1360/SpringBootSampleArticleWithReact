@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by M.Mohammadi
@@ -36,12 +37,17 @@ public class Article {
     @NotNull(message = "Price is required")
     private Long price;
 
+//    @OneToMany(mappedBy = "review")
+//    private List<Review> reviewList;
+
     //With internal-callbacks(PrePersist,PreUpdate)
     @JsonFormat(pattern = "yyyy-mm-dd")
     @Column(updatable = false)
     private Date created_At;
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
+
+
 
     public Article() {
     }
@@ -109,6 +115,14 @@ public class Article {
     public void setUpdated_At(Date updated_At) {
         this.updated_At = updated_At;
     }
+
+//    public List<Review> getReviewList() {
+//        return reviewList;
+//    }
+//
+//    public void setReviewList(List<Review> reviewList) {
+//        this.reviewList = reviewList;
+//    }
 
     @PrePersist
     protected void onCreate() {

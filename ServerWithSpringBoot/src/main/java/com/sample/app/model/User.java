@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 /**
  * Created by M.Mohammadi
@@ -33,6 +34,9 @@ public class User {
     @Column
     @JsonIgnore
     private String password;
+
+//    @OneToMany(mappedBy = "review")
+//    private List<Review> reviewList;
 
 
     public long getId() {
@@ -82,4 +86,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+//    public List<Review> getReviewList() {
+//        return reviewList;
+//    }
+//
+//    public void setReviewList(List<Review> reviewList) {
+//        this.reviewList = reviewList;
+//    }
 }
