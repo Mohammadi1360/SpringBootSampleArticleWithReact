@@ -1,228 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8cd0188-b28e-4a41-866e-100011b0f5ea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/model/Review.java" afterDir="false" />
+    <list default="true" id="e8cd0188-b28e-4a41-866e-100011b0f5ea" name="Default Changelist" comment="Did some cleanup.">
+      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/controller/EmployeeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/exceptions/EmployeeIdException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/exceptions/EmployeeIdExceptionResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/model/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/repositories/EmployeeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/services/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/model/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Menu/TopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Menu/TopMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/StartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/StartApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/resources/application.properties" afterDir="false" />
     </list>
     <list id="9ed8fdcb-7b81-4392-83ac-0b9b59bf48f0" name="NotImportant" comment="" />
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="501157044">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="html" value="1" />
-          <entry key="js" value="53" />
-          <entry key="json" value="12" />
-          <entry key="jsx" value="17" />
-          <entry key="ts" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="HTML" value="1" />
-          <entry key="JSON" value="12" />
-          <entry key="JSX Harmony" value="17" />
-          <entry key="JavaScript" value="53" />
-          <entry key="TypeScript" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="html" value="16" />
-          <entry key="js" value="264" />
-          <entry key="jsx" value="825" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="HTML" value="16" />
-          <entry key="JSX Harmony" value="825" />
-          <entry key="JavaScript" value="264" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.js.language.service.starts">
-        <counts>
-          <entry key="TypeScriptServerServiceImpl" value="2" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="-91579052">
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="html" value="3" />
-          <entry key="js" value="161" />
-          <entry key="json" value="3" />
-          <entry key="jsx" value="8" />
-          <entry key="png" value="2" />
-          <entry key="ts" value="19" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="HTML" value="3" />
-          <entry key="Image" value="2" />
-          <entry key="JSON" value="3" />
-          <entry key="JSX Harmony" value="8" />
-          <entry key="JavaScript" value="161" />
-          <entry key="TypeScript" value="19" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="js" value="4161" />
-          <entry key="json" value="8" />
-          <entry key="jsx" value="1256" />
-          <entry key="txt" value="619" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JSON" value="8" />
-          <entry key="JSX Harmony" value="1256" />
-          <entry key="JavaScript" value="4161" />
-          <entry key="PLAIN_TEXT" value="619" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.js.language.service.starts">
-        <counts>
-          <entry key="TypeScriptServerServiceImpl" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.10" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="6" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="ClientWithReact" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pages/Menu/TopMenu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/_components/PrivateRoute.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pages/HomePage/HomePage.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/_reducers/articles.reducer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2200">
-              <caret line="128" column="8" lean-forward="true" selection-start-line="128" selection-start-column="8" selection-end-line="128" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="28" column="4" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/_helpers/store.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/_reducers/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/_reducers/users.reducer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/_actions/article.actions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -328,6 +127,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
@@ -340,6 +142,7 @@
     <option name="width" value="835" />
     <option name="height" value="740" />
   </component>
+  <component name="ProjectId" id="1rRfLD9DnUYOBInzl53JQ7mfj80" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -402,21 +205,22 @@
       <pane id="Scope" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/sophiaangular-10/sophiaangular-10/sophia/ecommerce-sophia-new" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\Jetbrain\SpringBootSampleArticleWithReact\ClientWithReact\src" />
       <recent name="D:\Workspace\Jetbrain\SpringBootSampleArticleWithReact\ClientWithReact\src\Pages\Login" />
       <recent name="D:\Workspace\Jetbrain\SpringBootSampleArticleWithReact\ClientWithReact\public" />
       <recent name="D:\Workspace\Jetbrain\SpringBootSampleArticleWithReact\ClientWithReact\src\Pages\ArticlePage" />
-      <recent name="D:\Workspace\Jetbrain\SpringBootSampleArticleWithReact\ClientWithReact\src" />
       <recent name="D:\Workspace\Jetbrain\SpringBootSampleArticleWithReact\ClientWithReact\src\_reducers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -427,20 +231,8 @@
       <recent name="D:\Workspace\Jetbrain\Full-Stack\Full-Stack\spring-boot\react-semantic\src\Pages\App" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="npm.build">
-    <configuration name="build" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -450,7 +242,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -460,17 +252,8 @@
       <envs />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="npm.build" />
-      <item itemvalue="npm.start" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.start" />
-      </list>
-    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -490,6 +273,15 @@
       <workItem from="1587329613810" duration="9861000" />
       <workItem from="1587415034041" duration="1031000" />
       <workItem from="1588957717944" duration="3019000" />
+      <workItem from="1618943769908" duration="7080000" />
+      <workItem from="1619449763012" duration="2022000" />
+      <workItem from="1619473985792" duration="626000" />
+      <workItem from="1619534090351" duration="1845000" />
+      <workItem from="1619709025151" duration="190000" />
+      <workItem from="1636374854833" duration="1287000" />
+      <workItem from="1636459592206" duration="799000" />
+      <workItem from="1638888552563" duration="3954000" />
+      <workItem from="1667322709543" duration="1217000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Delete Article .">
       <created>1586731135995</created>
@@ -651,36 +443,18 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix Delete Article ." />

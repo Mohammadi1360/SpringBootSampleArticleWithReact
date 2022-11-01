@@ -32,10 +32,11 @@ class TopMenu extends React.Component {
             <Menu.Item as="a" name="login" onClick={this.login}>
               {!user ? 'Login' : 'Logout'}
             </Menu.Item>
-
-            <Menu.Item as="a" name="register" onClick={this.register}>
+            {!user ? <Menu.Item as="a" name="register" onClick={this.register}>
               Register
-            </Menu.Item>
+            </Menu.Item> : ''
+            }
+
           </Menu.Menu>
         </Container>
       </Menu>
