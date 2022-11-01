@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8cd0188-b28e-4a41-866e-100011b0f5ea" name="Default Changelist" comment="Did some cleanup.">
-      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/controller/EmployeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/exceptions/EmployeeIdException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/exceptions/EmployeeIdExceptionResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/model/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/repositories/EmployeeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/services/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Menu/TopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Menu/TopMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/StartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/StartApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/java/com/sample/app/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerWithSpringBoot/src/main/resources/application.properties" afterDir="false" />
     </list>
     <list id="9ed8fdcb-7b81-4392-83ac-0b9b59bf48f0" name="NotImportant" comment="" />
     <option name="SHOW_DIALOG" value="false" />
